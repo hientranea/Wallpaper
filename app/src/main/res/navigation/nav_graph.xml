@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.hientran.wallpaper.presentation.ui.home.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_wallpaperFragment"
+            app:destination="@id/wallpaperFragment"/>
+        <action
+            android:id="@+id/action_homeFragment_to_photoCollectionFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"
+            app:destination="@id/photoCollectionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/wallpaperFragment"
+        android:name="com.hientran.wallpaper.presentation.ui.wallpaper.WallpaperFragment"
+        android:label="WallpaperFragment">
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoCollectionFragment"
+        android:name="com.hientran.wallpaper.presentation.ui.photocollection.PhotoCollectionFragment"
+        android:label="PhotoCollectionFragment">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="nPhotos"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/action_photoCollectionFragment_to_wallpaperFragment"
+            app:destination="@id/wallpaperFragment" />
+    </fragment>
+</navigation>

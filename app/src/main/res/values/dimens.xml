@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="general_border_width">@dimen/_2sdp</dimen>
+    <dimen name="general_border_radius">@dimen/_4sdp</dimen>
+    <dimen name="general_horizontal_padding">@dimen/_13sdp</dimen>
+    <dimen name="general_spacing_item">@dimen/_7sdp</dimen>
+    <dimen name="retry_btn_height">@dimen/_25sdp</dimen>
+    <dimen name="loading_error_margin_top">@dimen/_10sdp</dimen>
+    <dimen name="loading_error_text_size">@dimen/_11ssp</dimen>
+
+    <dimen name="text_sub_title">@dimen/_13ssp</dimen>
+    <dimen name="text_title">@dimen/_17ssp</dimen>
+    <dimen name="text_heading">@dimen/_25ssp</dimen>
+
+    <dimen name="home_margin_top">@dimen/_50sdp</dimen>
+    <dimen name="home_margin_horizontal">@dimen/_15sdp</dimen>
+    <dimen name="home_title_margin_top">@dimen/_20sdp</dimen>
+    <dimen name="home_title_margin_bottom">@dimen/_15sdp</dimen>
+    <dimen name="home_subtitle_margin_top">@dimen/_8sdp</dimen>
+
+    <dimen name="wallpaper_apply_btn_size">@dimen/_40sdp</dimen>
+    <dimen name="wallpaper_apply_btn_margin_bottom">@dimen/_8sdp</dimen>
+    <dimen name="wallpaper_text_margin_bottom">@dimen/_20sdp</dimen>
+    <dimen name="wallpaper_back_button_size">@dimen/_20sdp</dimen>
+</resources>

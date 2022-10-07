@@ -1,0 +1,97 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.Wallpaper" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">#d7edee</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="NoActionBar" parent="@android:style/Theme.Holo.Light">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="TextTitle">
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:textSize">@dimen/text_title</item>
+    </style>
+
+    <style name="TextSubTitle">
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:textSize">@dimen/text_sub_title</item>
+    </style>
+
+    <style name="TextHeading" parent="TextTitle">
+        <item name="android:textSize">@dimen/text_heading</item>
+    </style>
+
+    <style name="CollectionCardLabel">
+        <item name="android:shadowColor">#4D000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/text_black</item>
+        <item name="android:padding">@dimen/_13sdp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:letterSpacing">0.1</item>
+        <item name="android:paddingTop">31dp</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+
+    <style name="AlertDialogTheme">
+        <item name="buttonBarPositiveButtonStyle">@style/Alert.Button.Positive</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Alert.Button.Negative</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Alert.Button.Negative</item>
+        <item name="shapeAppearanceMediumComponent">@style/Alert.RoundShapeAppearance</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/Alert.BodyText</item>
+    </style>
+
+    <style name="Alert.BodyText" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="Alert.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Alert.RoundShapeAppearance" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="Alert.Button.Positive" parent="Alert.Button">
+        <item name="android:textColor">@color/cod_grey</item>
+    </style>
+
+    <style name="Alert.Button.Negative" parent="Alert.Button.Positive">
+        <item name="android:fontFamily">@font/open_sans</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+    </style>
+
+    <style name="AppButton" parent="@style/Widget.AppCompat.Button">
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="AppButton.Grey.Outline" parent="AppButton">
+        <item name="android:background">@drawable/bg_grey_outline</item>
+        <item name="android:textColor">@color/inactive_label</item>
+    </style>
+
+</resources>
