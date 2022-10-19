@@ -14,7 +14,15 @@ class FakePexelRepositoryImpl: PexelsRepository {
     private val sampleUrls = WallpaperUrl(portrait = "https://images.pexels.com/photos/13918727/pexels-photo-13918727.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800")
 
     override fun search(keyword: String): Flow<PagingData<WallpaperPhoto>> {
-        return flowOf(PagingData.from(listOf(WallpaperPhoto())))
+        return flowOf(PagingData.from(
+            listOf(
+                WallpaperPhoto(1, urls = sampleUrls),
+                WallpaperPhoto(2, urls = sampleUrls),
+                WallpaperPhoto(3, urls = sampleUrls),
+                WallpaperPhoto(4, urls = sampleUrls),
+                WallpaperPhoto(5, urls = sampleUrls)
+            )
+        ))
     }
 
     override fun getHomeData(): Flow<PagingData<HomeItemView>> {

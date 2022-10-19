@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -13,6 +14,7 @@
         android:layout_marginEnd="@dimen/home_margin_horizontal"
         android:layout_marginStart="@dimen/home_margin_horizontal"
         android:hint="@string/home_search_hint"
+        app:layout_constraintTop_toTopOf="parent"
         app:boxBackgroundColor="@color/white_bg">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -20,4 +22,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
-</LinearLayout>
+
+    <ImageButton
+        android:id="@+id/ib_home_search"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/content_description"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:padding="@dimen/general_spacing_item"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_search"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintTop_toTopOf="@+id/til_home_search"
+        app:layout_constraintBottom_toBottomOf="@id/til_home_search"
+        app:layout_constraintEnd_toEndOf="@id/til_home_search" />
+</androidx.constraintlayout.widget.ConstraintLayout>

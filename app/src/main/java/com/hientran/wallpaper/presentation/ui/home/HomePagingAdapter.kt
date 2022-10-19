@@ -19,7 +19,8 @@ import java.util.PrimitiveIterator
 
 class HomePagingAdapter(
     private val onPhotoClick: (View, String) -> Unit,
-    private val onCollectionClick: (PhotoCollection) -> Unit
+    private val onCollectionClick: (PhotoCollection) -> Unit,
+    private val onSearchClick: (String) -> Unit
 ): PagingDataAdapter<HomeItemView, HomeViewHolder>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -36,7 +37,7 @@ class HomePagingAdapter(
         data.recycle()
 
         return when (viewType) {
-            R.layout.item_home_search_bar -> HomeSearchBarViewHolder(searchBarView)
+            R.layout.item_home_search_bar -> HomeSearchBarViewHolder(searchBarView, onSearchClick)
             R.layout.item_home_title -> HomeTitleViewHolder(titleView)
             R.layout.item_home_curated_photos ->
                 HomeCuratedPhotosViewHolder(onPhotoClick, curatedPhotosView)

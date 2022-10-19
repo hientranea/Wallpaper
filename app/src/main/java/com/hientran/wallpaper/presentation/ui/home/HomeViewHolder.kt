@@ -1,6 +1,7 @@
 package com.hientran.wallpaper.presentation.ui.home
 
 import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.hientran.wallpaper.data.model.PhotoCollection
 import com.hientran.wallpaper.databinding.ItemCollectionBinding
@@ -13,7 +14,20 @@ import com.hientran.wallpaper.presentation.ui.home.HomeItemView.Title
 
 abstract class HomeViewHolder(view: View): RecyclerView.ViewHolder(view)
 
-class HomeSearchBarViewHolder(view: ItemHomeSearchBarBinding): HomeViewHolder(view.root)
+class HomeSearchBarViewHolder(
+    view: ItemHomeSearchBarBinding,
+    onSearchClick: (String) -> Unit
+): HomeViewHolder(view.root) {
+    init {
+        view.etHomeSearch.addTextChangedListener {
+            view.ibHomeSearch.visibility = if (it.toString().isBlank()) View.GONE else View.VISIBLE
+        }
+        view.ibHomeSearch.setOnClickListener {
+            val query = view.etHomeSearch.text.toString()
+            onSearchClick(query)
+        }
+    }
+}
 
 class HomeTitleViewHolder(private val view: ItemHomeTitleBinding): HomeViewHolder(view.root) {
 

@@ -17,6 +17,7 @@ import com.hientran.wallpaper.presentation.base.BaseFragment
 import com.hientran.wallpaper.presentation.ui.common.adapter.GeneralLoadStateAdapter
 import com.hientran.wallpaper.presentation.ui.common.viewBinding
 import com.hientran.wallpaper.presentation.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToPhotoCollectionFragment
+import com.hientran.wallpaper.presentation.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToSearchFragment
 import com.hientran.wallpaper.presentation.ui.home.HomeFragmentDirections.Companion.actionHomeFragmentToWallpaperFragment
 import kotlinx.coroutines.launch
 
@@ -44,7 +45,11 @@ class HomeFragment: BaseFragment(R.layout.fragment_home) {
                         data.id, data.title, data.photosCount
                     )
                 )
-            })
+            },
+            onSearchClick = { query ->
+                findNavController().navigate(actionHomeFragmentToSearchFragment(query))
+            }
+        )
         val footerAdapter = GeneralLoadStateAdapter { homeAdapter.retry() }
         bindingView.rvHome.apply {
             this.adapter = homeAdapter.withLoadStateFooter(footerAdapter)
