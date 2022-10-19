@@ -1,11 +1,5 @@
-name: Run tests
-
-on:
-  push:
-    branches: [ "master", "setup-ci" ]
-  pull_request:
-    branches: [ "master" ]
-
+name: CI
+on: [push, pull_request]
 jobs:
   unit-test:
     runs-on: ubuntu-latest
@@ -92,24 +86,8 @@ jobs:
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
           script: ./gradlew connectedDebugAndroidTest
-      - name: Upload androidTest-results
+      - name: Upload android-test-results
         uses: actions/upload-artifact@v3
         with:
-          name: androidTest-results
+          name: android-test-results
           path: './app/build/reports/androidTests/connected'
-  test-reporter:
-    needs: [unit-test, ui-test]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: unit-test-results
-          path: unit-test-results/
-      - name: Make test report
-        uses: dorny/test-reporter@v1
-        with:
-          name: Test Report
-          path: 'unit-test-results/*.xml'
-          reporter: java-junit
