@@ -27,6 +27,11 @@ Now, you can download it on Google Play Store. Install it and give me your feedb
     ```
 
 ## :camera: Screenshots
+<p float="left">
+  <img src="./images/screenshot1.png" width="30%"/>
+  <img src="./images/screenshot2.png" width="30%"/>
+  <img src="./images/screenshot3.png" width="30%"/>
+</p>
 
 ## :blue_book: Built with
 - A single-activity architecture, using Jetpack Navigation
