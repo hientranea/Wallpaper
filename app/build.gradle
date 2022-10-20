@@ -55,64 +55,46 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation androidX.core
+    implementation androidX.appcompat
+    implementation androidX.fragment
+    implementation androidX.paging
+    implementation androidX.constrainlayout
+    implementation androidX.lifecycleviewmodel
 
-    implementation 'androidx.fragment:fragment-ktx:1.5.3'
+    implementation material.values()
 
-    // Navigation
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
+    implementation navigation.values()
 
-    // Paging Library
-    implementation 'androidx.paging:paging-runtime-ktx:3.1.1'
+    implementation glide.glide
+    annotationProcessor glide.compiler
 
-    // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha02")
+    implementation di.hilt
+    kapt di.hiltcompiler
 
-    // Glide
-    implementation 'com.github.bumptech.glide:glide:4.14.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.1'
+    implementation coroutines.values()
 
-    // Hilt
-    implementation('com.google.dagger:hilt-android:2.44')
-    kapt('com.google.dagger:hilt-android-compiler:2.44')
+    implementation retrofit.values()
 
-    // Coroutine
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation okhttp.values()
 
-    // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation dimens.values()
 
-    // Okhttp
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+    implementation timber.values()
 
-    // Dimension
-    implementation 'com.intuit.sdp:sdp-android:1.0.6'
-    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    testImplementation testing.junit.junit
+    testImplementation testing.coroutines
+    testImplementation testing.mockk.mockk
+    testImplementation testing.mockk.agentjvm
 
-    // Timber
-    implementation("com.jakewharton.timber:timber:5.0.1")
-
-    // Testing framework
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
-    testImplementation "io.mockk:mockk:1.13.2"
-    testImplementation "io.mockk:mockk-agent-jvm:1.13.2"
-
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    debugImplementation 'androidx.fragment:fragment-testing:1.5.3'
-    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.44'
-    kaptAndroidTest 'com.google.dagger:hilt-android-compiler:2.44'
-    androidTestImplementation 'androidx.navigation:navigation-testing:2.5.2'
-    androidTestImplementation "io.mockk:mockk-android:1.13.2"
-    androidTestImplementation('com.adevinta.android:barista:4.2.0') {
+    androidTestImplementation testing.junit.androidext
+    androidTestImplementation testing.espresso
+    debugImplementation testing.fragment
+    androidTestImplementation testing.hilt
+    kaptAndroidTest testing.hiltcompiler
+    androidTestImplementation testing.navigation
+    androidTestImplementation testing.mockk.android
+    androidTestImplementation(testing.barista) {
         exclude group: 'org.jetbrains.kotlin' // Only if you already use Kotlin in your project
     }
 }

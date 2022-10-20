@@ -1,0 +1,72 @@
+ext {
+    coroutines_version = '1.6.4'
+    dimens_version = '1.0.6'
+    fragment_version = '1.5.3'
+    mockk_version = '1.13.2'
+    nav_version = '2.5.2'
+    okhttp_version = '4.10.0'
+    glide_version = '4.14.1'
+    hilt_version = '2.44'
+    retrofit_version = '2.9.0'
+
+    androidX = [
+            core              : 'androidx.core:core-ktx:1.9.0',
+            appcompat         : 'androidx.appcompat:appcompat:1.5.1',
+            fragment          : "androidx.fragment:fragment-ktx:$fragment_version",
+            paging            : 'androidx.paging:paging-runtime-ktx:3.1.1',
+            constrainlayout   : 'androidx.constraintlayout:constraintlayout:2.1.4',
+            lifecycleviewmodel: 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha02'
+    ]
+    material = [
+            material: 'com.google.android.material:material:1.6.1'
+    ]
+    glide = [
+            glide   : "com.github.bumptech.glide:glide:$glide_version",
+            compiler: "com.github.bumptech.glide:compiler:$glide_version"
+    ]
+    di = [
+            hilt        : "com.google.dagger:hilt-android:$hilt_version",
+            hiltcompiler: "com.google.dagger:hilt-android-compiler:$hilt_version"
+    ]
+    navigation = [
+            fragment: "androidx.navigation:navigation-fragment-ktx:$nav_version",
+            ui      : "androidx.navigation:navigation-ui-ktx:$nav_version"
+    ]
+    okhttp = [
+            okhttp: "com.squareup.okhttp3:okhttp:$okhttp_version",
+            log   : "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
+    ]
+    retrofit = [
+            retrofit     : "com.squareup.retrofit2:retrofit:$retrofit_version",
+            gsonconverter: "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    ]
+    coroutines = [
+            core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version",
+            android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    ]
+    dimens = [
+            sdp: "com.intuit.sdp:sdp-android:$dimens_version",
+            ssp: "com.intuit.ssp:ssp-android:$dimens_version"
+    ]
+    timber = [
+            timber: "com.jakewharton.timber:timber:5.0.1"
+    ]
+    testing = [
+            junit       : [
+                    junit     : 'junit:junit:4.13.2',
+                    androidext: 'androidx.test.ext:junit:1.1.3'
+            ],
+            mockk       : [
+                    mockk   : "io.mockk:mockk:$mockk_version",
+                    agentjvm: "io.mockk:mockk-agent-jvm:$mockk_version",
+                    android : "io.mockk:mockk-android:$mockk_version"
+            ],
+            navigation  : "androidx.navigation:navigation-testing:$nav_version",
+            coroutines  : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version",
+            hilt        : "com.google.dagger:hilt-android-testing:$hilt_version",
+            hiltcompiler: "com.google.dagger:hilt-android-compiler:$hilt_version",
+            barista     : 'com.adevinta.android:barista:4.2.0',
+            espresso    : 'androidx.test.espresso:espresso-core:3.4.0',
+            fragment    : "androidx.fragment:fragment-testing:$fragment_version"
+    ]
+}
