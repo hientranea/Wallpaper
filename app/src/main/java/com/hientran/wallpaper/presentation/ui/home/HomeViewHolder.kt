@@ -3,7 +3,7 @@ package com.hientran.wallpaper.presentation.ui.home
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
-import com.hientran.wallpaper.data.model.PhotoCollection
+import com.hientran.wallpaper.data.remote.model.PhotoCollection
 import com.hientran.wallpaper.databinding.ItemCollectionBinding
 import com.hientran.wallpaper.databinding.ItemHomeCuratedPhotosBinding
 import com.hientran.wallpaper.databinding.ItemHomeSearchBarBinding

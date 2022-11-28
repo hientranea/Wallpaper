@@ -8,6 +8,7 @@ ext {
     glide_version = '4.14.1'
     hilt_version = '2.44'
     retrofit_version = '2.9.0'
+    room_version = '2.4.3'
 
     androidX = [
             core              : 'androidx.core:core-ktx:1.9.0',
@@ -43,6 +44,12 @@ ext {
     coroutines = [
             core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version",
             android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    ]
+    room = [
+            runtime: "androidx.room:room-runtime:$room_version",
+            compiler: "androidx.room:room-compiler:$room_version",
+             ktx: "androidx.room:room-ktx:$room_version",
+            paging: "androidx.room:room-paging:$room_version"
     ]
     dimens = [
             sdp: "com.intuit.sdp:sdp-android:$dimens_version",

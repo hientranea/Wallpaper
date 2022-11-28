@@ -1,4 +1,4 @@
-package com.hientran.wallpaper.data.exception
+package com.hientran.wallpaper.data
 
 import androidx.annotation.StringRes
 

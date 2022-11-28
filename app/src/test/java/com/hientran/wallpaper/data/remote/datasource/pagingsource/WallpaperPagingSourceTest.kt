@@ -1,11 +1,12 @@
-@file:OptIn(ExperimentalCoroutinesApi::class)
+@file:OptIn(ExperimentalCoroutinesApi::class, ExperimentalCoroutinesApi::class)
 
-package com.hientran.wallpaper.data.remote.pagingsource
+package com.hientran.wallpaper.data.remote.datasource.pagingsource
 
 import androidx.paging.PagingSource
 import com.hientran.wallpaper.common.DEFAULT_PER_PAGE
-import com.hientran.wallpaper.data.model.CollectionMedia
-import com.hientran.wallpaper.data.model.WallpaperPhoto
+import com.hientran.wallpaper.data.remote.model.WallpaperList
+import com.hientran.wallpaper.data.remote.model.WallpaperPhoto
+import com.hientran.wallpaper.data.remote.model.toWallpaperEntity
 import com.hientran.wallpaper.data.remote.services.PexelsApiService
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -16,14 +17,14 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-class CollectionMediaPagingSourceTest {
-    private val collectionId = "abcXyz"
+class WallpaperPagingSourceTest {
+    private val query = "dogs"
     private val mockPhotos = listOf(WallpaperPhoto())
-    private val mockResponse = CollectionMedia(photos = mockPhotos)
+    private val mockResponse = WallpaperList(photos = mockPhotos)
     private val service = mockk<PexelsApiService>(relaxed = true) {
-        coEvery { getCollectionMedia(any(), any(), any(), any()) } returns mockResponse
+        coEvery { search(any(), any(), any()) } returns mockResponse
     }
-    private val pagingSource = CollectionMediaPagingSource(service, collectionId)
+    private val pagingSource = WallpaperPagingSource(service, query)
 
     @Test
     fun `loads first page correctly from paging source`() {
@@ -33,9 +34,13 @@ class CollectionMediaPagingSourceTest {
 
         runTest {
             val response = pagingSource.load(loadParams)
-            coVerify { service.getCollectionMedia(collectionId, DEFAULT_PER_PAGE, 1, "photos") }
+            coVerify { service.search(query, DEFAULT_PER_PAGE, 1) }
             assertEquals(
-                PagingSource.LoadResult.Page(data = mockPhotos, prevKey = null, nextKey = 2),
+                PagingSource.LoadResult.Page(
+                    data = mockPhotos.map { it.toWallpaperEntity() },
+                    prevKey = null,
+                    nextKey = 2
+                ),
                 response
             )
         }
@@ -49,9 +54,13 @@ class CollectionMediaPagingSourceTest {
         }
         runTest {
             val response = pagingSource.load(loadParams)
-            coVerify { service.getCollectionMedia(collectionId, DEFAULT_PER_PAGE, 2, "photos") }
+            coVerify { service.search(query, DEFAULT_PER_PAGE, 2) }
             assertEquals(
-                PagingSource.LoadResult.Page(data = mockPhotos, prevKey = 1, nextKey = 3),
+                PagingSource.LoadResult.Page(
+                    data = mockPhotos.map { it.toWallpaperEntity() },
+                    prevKey = 1,
+                    nextKey = 3
+                ),
                 response
             )
         }

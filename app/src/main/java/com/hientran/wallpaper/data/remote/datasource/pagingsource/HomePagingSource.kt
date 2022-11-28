@@ -1,12 +1,16 @@
-package com.hientran.wallpaper.data.remote.pagingsource
+package com.hientran.wallpaper.data.remote.datasource.pagingsource
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.hientran.wallpaper.R
 import com.hientran.wallpaper.common.DEFAULT_STARTING_PAGE_INDEX
+import com.hientran.wallpaper.data.remote.model.toWallpaperEntity
 import com.hientran.wallpaper.data.remote.services.PexelsApiService
 import com.hientran.wallpaper.presentation.ui.home.HomeItemView
 
+/**
+ * Paging source loads data directly from network using Pexel APIs
+ */
 class HomePagingSource(
     private val pexelsApiService: PexelsApiService
 ): PagingSource<Int, HomeItemView>() {
@@ -25,7 +29,8 @@ class HomePagingSource(
 
                 // Fetch and add list of curated photos
                 val curatedPhotos = pexelsApiService.getCuratedPhotos()
-                data.add(0, HomeItemView.CuratedPhotos(curatedPhotos.photos))
+                val photos = curatedPhotos.photos.map { it.toWallpaperEntity() }
+                data.add(0, HomeItemView.CuratedPhotos(photos))
 
                 // Add curated photos title
                 data.add(0, HomeItemView.Title(R.string.home_best_of_month))

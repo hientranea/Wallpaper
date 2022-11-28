@@ -1,6 +1,9 @@
 package com.hientran.wallpaper.base
 
+import androidx.room.withTransaction
+import io.mockk.coEvery
 import io.mockk.mockkStatic
+import io.mockk.slot
 import io.mockk.unmockkStatic
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,12 +23,22 @@ open class BaseTest {
         if (this is MockPaging) {
             mockkStatic("androidx.paging.CachedPagingDataKt")
         }
+        if (this is MockDatabaseTransaction) {
+            mockkStatic("androidx.room.RoomDatabaseKt")
+            val transactionLambda = slot<suspend () -> Any>()
+            coEvery { getDatabase().withTransaction(capture(transactionLambda)) } coAnswers {
+                transactionLambda.captured.invoke()
+            }
+        }
     }
 
     @After
     open fun teardown() {
         if (this is MockPaging) {
             unmockkStatic("androidx.paging.CachedPagingDataKt")
+        }
+        if (this is MockDatabaseTransaction) {
+            unmockkStatic("androidx.room.RoomDatabaseKt")
         }
         Dispatchers.resetMain()
     }

@@ -1,7 +1,7 @@
 package com.hientran.wallpaper.data.mapper
 
 import com.hientran.wallpaper.R
-import com.hientran.wallpaper.data.exception.AppException
+import com.hientran.wallpaper.data.AppException
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody
 import org.junit.Assert.assertEquals

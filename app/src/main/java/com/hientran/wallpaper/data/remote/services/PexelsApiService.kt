@@ -1,9 +1,9 @@
 package com.hientran.wallpaper.data.remote.services
 
 import com.hientran.wallpaper.common.DEFAULT_PER_PAGE
-import com.hientran.wallpaper.data.model.CollectionList
-import com.hientran.wallpaper.data.model.CollectionMedia
-import com.hientran.wallpaper.data.model.WallpaperList
+import com.hientran.wallpaper.data.remote.model.CollectionList
+import com.hientran.wallpaper.data.remote.model.CollectionMedia
+import com.hientran.wallpaper.data.remote.model.WallpaperList
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

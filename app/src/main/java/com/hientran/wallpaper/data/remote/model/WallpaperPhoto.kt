@@ -1,6 +1,7 @@
-package com.hientran.wallpaper.data.model
+package com.hientran.wallpaper.data.remote.model
 
 import com.google.gson.annotations.SerializedName
+import com.hientran.wallpaper.data.local.entities.WallpaperEntity
 
 data class WallpaperPhoto(
     @SerializedName("id") val id: Long = -1L,
@@ -19,3 +20,15 @@ data class WallpaperUrl(
     @SerializedName("landscape") val landscape: String = "",
     @SerializedName("tiny") val tiny: String = ""
 )
+
+fun WallpaperPhoto.toWallpaperEntity(collectionId: String? = null, searchId: Long? = null): WallpaperEntity {
+    return WallpaperEntity(
+        photoId = id,
+        width = width,
+        height = height,
+        mediumUrl = urls?.medium ?: "",
+        portraitUrl = urls?.portrait ?: "",
+        collectionId = collectionId ?: "",
+        searchId = searchId
+    )
+}

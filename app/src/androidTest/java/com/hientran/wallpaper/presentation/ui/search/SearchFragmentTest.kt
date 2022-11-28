@@ -32,7 +32,7 @@ class SearchFragmentTest {
     fun renderSearchListCorrectly() {
         launchFragmentInHiltContainer<SearchFragment>(bundle)
         assertDisplayed(R.id.tv_search_title, "Dogs")
-        assertListItemCount(R.id.rv_search, 5)
+        assertListItemCount(R.id.rv_search, 3)
     }
 
     @Test

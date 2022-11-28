@@ -1,13 +1,14 @@
 @file:OptIn(ExperimentalCoroutinesApi::class)
 
-package com.hientran.wallpaper.data.remote.pagingsource
+package com.hientran.wallpaper.data.remote.datasource.pagingsource
 
 import androidx.paging.PagingSource
 import com.hientran.wallpaper.R
 import com.hientran.wallpaper.common.DEFAULT_PER_PAGE
-import com.hientran.wallpaper.data.model.CollectionList
-import com.hientran.wallpaper.data.model.PhotoCollection
-import com.hientran.wallpaper.data.model.WallpaperList
+import com.hientran.wallpaper.data.remote.model.CollectionList
+import com.hientran.wallpaper.data.remote.model.PhotoCollection
+import com.hientran.wallpaper.data.remote.model.WallpaperList
+import com.hientran.wallpaper.data.remote.model.toWallpaperEntity
 import com.hientran.wallpaper.data.remote.services.PexelsApiService
 import com.hientran.wallpaper.presentation.ui.home.HomeItemView
 import io.mockk.coEvery
@@ -43,12 +44,11 @@ class HomePagingSourceTest {
                     data = listOf(
                         HomeItemView.SearchBar(),
                         HomeItemView.Title(R.string.home_best_of_month),
-                        HomeItemView.CuratedPhotos(mockWallpaperList.photos),
+                        HomeItemView.CuratedPhotos(mockWallpaperList.photos.map { it.toWallpaperEntity() }),
                         HomeItemView.Title(R.string.home_categories),
                         HomeItemView.Collection(mockCollections[0])
                     ), prevKey = null, nextKey = 2
-                ),
-                response
+                ), response
             )
         }
     }
@@ -67,8 +67,7 @@ class HomePagingSourceTest {
                     data = listOf(
                         HomeItemView.Collection(mockCollections[0])
                     ), prevKey = 1, nextKey = 3
-                ),
-                response
+                ), response
             )
         }
     }

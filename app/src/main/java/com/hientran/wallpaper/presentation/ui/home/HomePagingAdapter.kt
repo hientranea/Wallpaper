@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.hientran.wallpaper.R
-import com.hientran.wallpaper.data.model.PhotoCollection
+import com.hientran.wallpaper.data.remote.model.PhotoCollection
 import com.hientran.wallpaper.databinding.ItemCollectionBinding
 import com.hientran.wallpaper.databinding.ItemHomeCuratedPhotosBinding
 import com.hientran.wallpaper.databinding.ItemHomeSearchBarBinding

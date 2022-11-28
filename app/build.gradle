@@ -72,6 +72,11 @@ dependencies {
     implementation di.hilt
     kapt di.hiltcompiler
 
+    implementation room.runtime
+    implementation room.paging
+    implementation room.ktx
+    kapt room.compiler
+
     implementation coroutines.values()
 
     implementation retrofit.values()

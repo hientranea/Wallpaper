@@ -1,7 +1,7 @@
 package com.hientran.wallpaper.data.mapper
 
 import com.hientran.wallpaper.R
-import com.hientran.wallpaper.data.exception.AppException
+import com.hientran.wallpaper.data.AppException
 import retrofit2.HttpException
 import java.io.IOException
 

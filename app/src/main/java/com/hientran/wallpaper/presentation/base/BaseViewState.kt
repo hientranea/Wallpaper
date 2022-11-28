@@ -1,6 +1,6 @@
 package com.hientran.wallpaper.presentation.base
 
-import com.hientran.wallpaper.data.exception.AppException
+import com.hientran.wallpaper.data.AppException
 
 data class BaseViewState(
     val isLoading: Boolean = false,

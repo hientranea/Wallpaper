@@ -1,4 +1,4 @@
-package com.hientran.wallpaper.data.model
+package com.hientran.wallpaper.data.remote.model
 
 import com.google.gson.annotations.SerializedName
 

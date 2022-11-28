@@ -2,27 +2,28 @@ package com.hientran.wallpaper.mockmodule
 
 import androidx.paging.PagingData
 import com.hientran.wallpaper.R
-import com.hientran.wallpaper.data.model.PhotoCollection
-import com.hientran.wallpaper.data.model.WallpaperPhoto
-import com.hientran.wallpaper.data.model.WallpaperUrl
+import com.hientran.wallpaper.data.local.entities.SearchEntity
+import com.hientran.wallpaper.data.local.entities.WallpaperEntity
+import com.hientran.wallpaper.data.remote.model.PhotoCollection
 import com.hientran.wallpaper.domain.repositories.PexelsRepository
 import com.hientran.wallpaper.presentation.ui.home.HomeItemView
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
 class FakePexelRepositoryImpl: PexelsRepository {
-    private val sampleUrls = WallpaperUrl(portrait = "https://images.pexels.com/photos/13918727/pexels-photo-13918727.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800")
+    private val sampleUrl =
+        "https://images.pexels.com/photos/13918727/pexels-photo-13918727.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800"
 
-    override fun search(keyword: String): Flow<PagingData<WallpaperPhoto>> {
-        return flowOf(PagingData.from(
-            listOf(
-                WallpaperPhoto(1, urls = sampleUrls),
-                WallpaperPhoto(2, urls = sampleUrls),
-                WallpaperPhoto(3, urls = sampleUrls),
-                WallpaperPhoto(4, urls = sampleUrls),
-                WallpaperPhoto(5, urls = sampleUrls)
+    override fun search(keyword: SearchEntity): Flow<PagingData<WallpaperEntity>> {
+        return flowOf(
+            PagingData.from(
+                listOf(
+                    WallpaperEntity(id = 1, portraitUrl = sampleUrl),
+                    WallpaperEntity(id = 2, portraitUrl = sampleUrl),
+                    WallpaperEntity(id = 3, portraitUrl = sampleUrl),
+                )
             )
-        ))
+        )
     }
 
     override fun getHomeData(): Flow<PagingData<HomeItemView>> {
@@ -32,7 +33,7 @@ class FakePexelRepositoryImpl: PexelsRepository {
                     HomeItemView.SearchBar(),
                     HomeItemView.Title(R.string.home_best_of_month),
                     HomeItemView.CuratedPhotos(
-                        photos = listOf(WallpaperPhoto(1, urls = sampleUrls))
+                        photos = listOf(WallpaperEntity(id = 1, portraitUrl = sampleUrl))
                     ),
                     HomeItemView.Title(R.string.home_categories),
                     HomeItemView.Collection(PhotoCollection(title = "A", photosCount = 1)),
@@ -43,15 +44,16 @@ class FakePexelRepositoryImpl: PexelsRepository {
         )
     }
 
-    override fun getCollectionMedia(id: String): Flow<PagingData<WallpaperPhoto>> {
+    override fun getCollectionMedia(id: String): Flow<PagingData<WallpaperEntity>> {
         return flowOf(
             PagingData.from(
                 listOf(
-                    WallpaperPhoto(1, urls = sampleUrls),
-                    WallpaperPhoto(2, urls = sampleUrls),
-                    WallpaperPhoto(3, urls = sampleUrls)
+                    WallpaperEntity(id = 1, portraitUrl = sampleUrl),
+                    WallpaperEntity(id = 2, portraitUrl = sampleUrl),
+                    WallpaperEntity(id = 3, portraitUrl = sampleUrl),
                 )
             )
         )
     }
 }
+
